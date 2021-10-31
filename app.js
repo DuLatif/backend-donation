@@ -3,11 +3,13 @@ const express = require('express')
 const app = express()
 const handleError = require('./middlewares/handleError')
 const salesforce = require('./middlewares/salesforce')
+const cors = require('cors')
 
+app.use(cors())
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-app.post('/contact' , salesforce , async (req,res,next) => {
+app.post('/donate' , salesforce , async (req,res,next) => {
     try {
         const SF = req.SF
         const {donation , email , fullName , nric , phoneNumber , address} = req.body
