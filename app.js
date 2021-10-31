@@ -9,6 +9,10 @@ app.use(cors())
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
+app.get('/test' , (req,res) => {
+    res.send("Application running")
+})
+
 app.post('/donate' , salesforce , async (req,res,next) => {
     try {
         const SF = req.SF
