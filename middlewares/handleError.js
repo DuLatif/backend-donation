@@ -1,7 +1,7 @@
 const handleError = (err,req,res,next) => {
     console.log(err)
-    res.status(err.code).json({
-        message: err.message,
+    res.status(err.code || 500).json({
+        message: err.message || "Internal server error"
     })
 }
 
